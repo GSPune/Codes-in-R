@@ -12,8 +12,17 @@ data = data.frame(LC,UC,f)
 
 x = (LC+UC)/2
 xf = x * f
-data = data.frame(LC,UC,f,x,xf)
-
+data2 = data.frame(LC,UC,f,x,xf)
+data2
 arth_mean = sum(xf)/sum(f)
 
 #(b) Median: The results must include a table containing LCF.
+LCF<-integer(length(f))
+LCF[1] = f[1]
+for (i in 2:length(f)){
+    #print(LCF[i])
+    LCF[i] = LCF[i-1]+f[i]
+}
+
+data3 = cbind(data,LCF)
+    
