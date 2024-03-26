@@ -44,3 +44,22 @@ h = (UC - LC)[1] #class width of median class
 Median  = l + (((N/2)-cf)*(h/F0))
 print(Median)
 #----------------------------------------------------------------------------------------------------
+# (c) Mode (Assuming there is the unique mode).
+#data4 = data
+max = 1
+
+for (i in 1:length(f)){
+    if(f[i] > f[max]){
+        max = i; #max gives us the modal class row 
+    }
+}
+
+fm = data[max,3]
+f1 = data[max-1,3]
+f2 = data[max+1,3]
+
+l = data[max,1]
+Mode = l + (h * ((fm - f1)/(2*fm-f1-f2)))
+print(Mode)
+#----------------------------------------------------------------------------------------------------
+# (d) Quartiles
