@@ -20,6 +20,7 @@ xf = x * f
 data2 = data.frame(LC,UC,f,x,xf)
 data2
 arth_mean = sum(xf)/sum(f)
+print(paste("Mean :",arth_mean))
 #-----------------------------------------------------------------------------------------------------
 #(b) Median: The results must include a table containing LCF.
 N = sum(f)
@@ -42,7 +43,7 @@ cf = data3[p-1,4] #Lcf of class previous to median class
 F0 = data3[p,3] # freq. of median class
 h = (UC - LC)[1] #class width of median class
 Median  = l + (((N/2)-cf)*(h/F0))
-print(Median)
+print(paste("Quartile 2 / Median :",Median)) #also the second quartile
 #----------------------------------------------------------------------------------------------------
 # (c) Mode (Assuming there is the unique mode).
 #data4 = data
@@ -60,6 +61,32 @@ f2 = data[max+1,3]
 
 l = data[max,1]
 Mode = l + (h * ((fm - f1)/(2*fm-f1-f2)))
-print(Mode)
+print(paste("Mode :",Mode))
 #----------------------------------------------------------------------------------------------------
-# (d) Quartiles
+# (d) Quartiles Q1,Q3 and Q2 = Median
+for (i in 2:length(f)){
+    if(LCF[i] > (N/4)){
+        t = i;break; #t gives us the Q1 class row 
+    }
+}
+
+l = data3[t,1] #lower class boundary of quartile class
+cf = data3[t-1,4] #Lcf of class previous to quartile class
+F0 = data3[t,3] # freq. of quartile class
+h = (UC - LC)[1] #class width of quartile class
+Q1 = l + (((N/4)-cf)*(h/F0))
+print(paste("Quartile 1 :",Q1))
+
+
+for (i in 2:length(f)){
+    if(LCF[i] > (3*N/4)){
+        u = i;break; #t gives us the Q3 class row 
+    }
+}
+
+l = data3[u,1] #lower class boundary of quartile class
+cf = data3[u-1,4] #Lcf of class previous to quartile class
+F0 = data3[u,3] # freq. of quartile class
+h = (UC - LC)[1] #class width of quartile class
+Q3 = l + ((((3*N)/4)-cf)*(h/F0))
+print(paste("Quartile 3 :",Q3))
