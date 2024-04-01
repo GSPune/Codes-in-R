@@ -23,6 +23,7 @@ print(paste("Mean :",mean(l,u,fq)))
 #Function for calculation of Mode
 mode = function(LC,UC,f)
 {
+    data = data.frame(LC,UC,f)
     max = 1
     
     for (i in 1:length(f)){
@@ -34,7 +35,7 @@ mode = function(LC,UC,f)
     fm = data[max,3]
     f1 = data[max-1,3] #pre-modal frequency
     f2 = data[max+1,3] #post-modal frequency
-    
+    h = (UC - LC)[1]
     l = data[max,1]
     Mode = l + (h * ((fm - f1)/(2*fm-f1-f2)))
     return(Mode)
@@ -45,6 +46,16 @@ print(paste("Mode :",mode(l,u,fq)))
 #k <- readline("Enter the Quartile number to be calculated:")
 
 Quartiles <- function(LC,UC,f,k){
+    
+    data = data.frame(LC,UC,f)
+    N = sum(f)
+    LCF<-integer(length(f))
+    LCF[1] = f[1]
+    for (i in 2:length(f)){
+        #print(LCF[i])
+        LCF[i] = LCF[i-1]+f[i]
+    }
+    data3 = cbind(data,LCF)
     
     for (i in 2:length(f)){
         if(LCF[i] > (k*N/4)){
