@@ -34,10 +34,14 @@ knn.regression <- function(train.x,train.y,k){
         # sd$points3d(x1[Sorted[1:k]],x2[Sorted[1:k]],y[Sorted[1:k]],col="green",pch=19)
         sd$points3d(train.x[j,1],train.x[j,2],y.est[j],col="red",pch=19)
         
+        my.lm <- lm(y ~ train.x[,1] + train.x[,2])
+        sd$plane3d(my.lm,draw_polygon = FALSE)
         # print(y.est[j])
     }
     return(y.est)
 }
+
+
 
 m = knn.regression(train.x,y,k)
 
