@@ -4,3 +4,16 @@
 # upper bounds and the frequencies. Further, t can be 1, 2 or 3 where 1,2,3 respectively stand for mean,
 # median and mode.
 
+ct <- function(lb,ub,fr,t){
+    if (t = 1){
+            # data = data.frame(LC,UC,f)
+        x = (lb+ub)/2
+        xf = x * fr
+        arth_mean = sum(xf)/sum(fr)
+        return(arth_mean)
+        # print(paste("Mean :",mean(l,u,fq)))
+    }
+    else if (t = 2){
+        
+    }
+}
