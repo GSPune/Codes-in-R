@@ -14,6 +14,26 @@ ct <- function(lb,ub,fr,t){
         # print(paste("Mean :",mean(l,u,fq)))
     }
     else if (t = 2){
+        data = data.frame(lb,ub,fr)
+        N = sum(fr)
+        LCF<-integer(length(fr))
+        LCF[1] = fr[1]
+        for (i in 2:length(fr)){
+            #print(LCF[i])
+            LCF[i] = LCF[i-1]+fr[i]
+        }
+        data3 = cbind(data,LCF)
+        for (i in 2:length(fr)){
+            if(LCF[i] > (N/2)){
+                u = i;break; #t gives us the median class row 
+            }
+        }
         
+        l = data3[u,1] #lower class boundary of median class
+        cf = data3[u-1,4] #Lcf of class previous to median class
+        F0 = data3[u,3] # freq. of median class
+        h = (ub - lb)[1] #class width of median class
+        Median  = l + (((N/2)-cf)*(h/F0))
+        return(Median)
     }
 }
