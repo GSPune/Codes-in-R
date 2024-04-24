@@ -25,3 +25,10 @@ mpg
 
 plot(horsepower,mpg)
 identify(horsepower,mpg,name)
+
+pairs(Auto)
+#scatterplots for just a subset of the variables.
+pairs(
+    ~ mpg + displacement + horsepower + weight + acceleration ,
+    data = Auto
+)
