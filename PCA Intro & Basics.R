@@ -44,49 +44,50 @@ cor(dm)
 dev.off()
 
 #calculate the eigenvalues of the sample dispersion
-e=eigen(corMat)
-ev=e$values
-ev
+# e=eigen(corMat)
+# ev=e$values
+# ev
 
 #scree plot
-N = c(1,2,3)
-plot(ev,N)
+
+# N = c(1,2,3)
+# plot(ev,N)
 # plot(1:3,ev,type="1",col="red",xlab="PC Number",ylab="Eigenvalues")
 # points(1:3,ev,col="green",pch=19)
 
-s = sum(ev)
-cs = cumsum(ev)
-contrib = data.frame("PC Nos" = 1:3,"percent cont." = (cs/s)*100)
+# s = sum(ev)
+# cs = cumsum(ev)
+# contrib = data.frame("PC Nos" = 1:3,"percent cont." = (cs/s)*100)
 
-evec = e$vectors
-is.matrix(evec)
+# evec = e$vectors
+# is.matrix(evec)
 
 #checking properties of a matrix of eigen-vectors
-evec[,1]
-o = evec[,1]%*%(t(evec[,1]))
-i = (t(evec[,1]))%*%evec[,1]
+# evec[,1]
+# o = evec[,1]%*%(t(evec[,1]))
+# i = (t(evec[,1]))%*%evec[,1]
 
-l=c()
-#checking whether eigenvectors have unit length
-for(i in 1:p){
-    l[i] = sqrt(sum(evec[(1:3),i]))
-}
-evec[(1:3),1]
-round(l)
+# l=c()
+# #checking whether eigenvectors have unit length
+# for(i in 1:p){
+#     l[i] = sqrt(sum(evec[(1:3),i]))
+# }
+# evec[(1:3),1]
+# round(l)
 
-d = diag(ev)
-evec%*%d%*%(t(evec))
+# d = diag(ev)
+# evec%*%d%*%(t(evec))
 
-evec[,1]
-evec[,2]
-#dm is not standardized..
-DM1 = dm%*%evec
-par(mfrow=c(p,p))
-for (i in 1:p){
-    for(j in 1:p){
-        plot(DM1[,i],DM1[,j])
-    }
-}
+# evec[,1]
+# evec[,2]
+# #dm is not standardized..
+# DM1 = dm%*%evec
+# par(mfrow=c(p,p))
+# for (i in 1:p){
+#     for(j in 1:p){
+#         plot(DM1[,i],DM1[,j])
+#     }
+# }
 
 #centering data matrix
 cdm = matrix(nrow=n,ncol=p)
