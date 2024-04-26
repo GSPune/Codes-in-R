@@ -41,6 +41,7 @@ S
 corMat
 
 #Compute the new score matrix using 'evec'
+#However dm is still unstandardized!
 dmNew = dm%*%evec
 par(mfrow=c(p,p))
 #check if introduced multi-collinearity is gone between the variables
@@ -50,3 +51,10 @@ for (i in 1:p){
     }
 }
 dev.off()
+
+#standarizing or centering the data matrix
+cdm = matrix(nrow=n,ncol=p)
+for (i in 1:p){
+    # each col is converted
+    cdm[,i] = (dm[,i] - mean(dm[,i]))/sd(dm[,i])
+}
