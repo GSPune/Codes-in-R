@@ -7,14 +7,19 @@ nrm=function(x){
     return(f)
 }
 nrm(1)
-
+#Density generation for the normal distribution with mean equal to mean and standard deviation equal to sd.
 dnorm(1,mean=1,sd=2)
 y=nrm(x)
-plot(x,y,type="l",lwd=3,col="brown")
+plot(x,y,type="l",lwd=3,col="brown",usr=c(-2,4,0,1))
+# This function adds one or more straight lines through the current plot.
 abline(v=1,lwd=3,col="green")
 
 s=c("mu=1","sd=2")
+# This function can be used to add legends to plots. Note that a call to the function 
+# locator(1) can be used in place of the x and y arguments.
 legend(locator(1),legend=s,horiz=FALSE)
+#locator(1) Reads the position of the graphics cursor when the (first) 
+# mouse button is pressed.
 
 ##############################################
 nrm2=function(x){
@@ -33,6 +38,8 @@ y2 = nrm2(x)
 #abline(v=1,lwd=3,col="green")
 
 legend(locator(1),legend=s,horiz=FALSE)
+#A generic function taking coordinates given in various ways and joining the 
+#corresponding points with line segments.
 lines(x,y2,lwd=3,col="violet")
 s1=c("mu=0","sd=1")
 legend(locator(1),legend=s1,horiz = FALSE)
@@ -53,6 +60,8 @@ hist(obs,breaks=breaks,col="white",main="My Histogram",xlab="Observations",ylab=
 lb=seq(100,300,100)
 ub=seq(200,400,100)
 obs = c(127,254,289,256,233,118,119,325,399,336)
+# length(obs)
+# obs[1]
 f2 = c(0,0,0)
 for (t in obs){
     print(t)
