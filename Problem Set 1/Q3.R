@@ -5,7 +5,7 @@
 # median and mode.
 
 ct <- function(lb,ub,fr,t){
-    if (t = 1){
+    if (t == 1){
             # data = data.frame(LC,UC,f)
         x = (lb+ub)/2
         xf = x * fr
@@ -13,7 +13,7 @@ ct <- function(lb,ub,fr,t){
         return(arth_mean)
         # print(paste("Mean :",mean(l,u,fq)))
     }
-    else if (t = 2){
+    else if (t == 2){
         data = data.frame(lb,ub,fr)
         N = sum(fr)
         LCF<-integer(length(fr))
@@ -35,5 +35,24 @@ ct <- function(lb,ub,fr,t){
         h = (ub - lb)[1] #class width of median class
         Median  = l + (((N/2)-cf)*(h/F0))
         return(Median)
+    }
+    else if(t == 3){
+        f = fr
+        data = data.frame(lb,ub,f)
+        max = 1
+        
+        for (i in 1:length(f)){
+            if(f[i] > f[max]){
+                max = i; #max gives us the modal class row 
+            }
+        }
+        
+        fm = data[max,3]
+        f1 = data[max-1,3] #pre-modal frequency
+        f2 = data[max+1,3] #post-modal frequency
+        h = (ub - lb)[1]
+        l = data[max,1]
+        Mode = l + (h * ((fm - f1)/(2*fm-f1-f2)))
+        return(Mode)
     }
 }

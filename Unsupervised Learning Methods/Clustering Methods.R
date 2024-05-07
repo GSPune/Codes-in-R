@@ -6,6 +6,7 @@ head(mtcars, 5) #printing first 5 rows of the data
 is.matrix(mtcars)#data is not in the matrix form
 n=nrow(mtcars)#no of objects 
 p=ncol(mtcars)#no of variables
+ 
 #preparing data matrix
 x=c()
 for(i in 1:p)
@@ -66,4 +67,4 @@ groups=cutree(fit, k=4) # cut tree into 4 clusters
 rect.hclust(fit, k=4, border="red")
 rect.hclust(fit, k=2, border="green")
 
-#HW How to perform k mediods clustering?if possible without any possible packages like hclust
+#Think about how to perform k mediods clustering?if possible without any possible packages like hclust()
