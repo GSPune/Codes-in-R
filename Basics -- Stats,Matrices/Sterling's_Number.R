@@ -3,17 +3,17 @@
 #!/usr/bin/env Rscript
 
 S <- function(n,k){
-#print(n)
-#print(k)
- if (k == 1 || k == 0){
-   return (k);
-}
+   #print(n)
+   #print(k)
+   if (k == 1 || k == 0){
+      return (k);
+   }
 
-if (k == n){
-   return (1);
-}
-   
- return (S(n-1,k-1) + k * S(n-1,k));
+   if (k == n){
+      return (1);
+   }
+      
+   return (S(n-1,k-1) + k * S(n-1,k));
 }
 
 row <- readLines("stdin",n=1)
